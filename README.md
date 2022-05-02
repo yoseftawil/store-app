@@ -16,5 +16,5 @@ python3 app.py
 
 ```
 docker pull yoseftawil353/store-app
-docker run -it -p 5000:5000 store-app
+docker run -it -p 5000:5000 yoseftawil353/store-app
 ```
