@@ -1,0 +1,55 @@
+{% extends 'base.html' %}
+
+{% block head %}
+
+<title>Search Products</title>
+
+{% endblock %}
+
+{% block body %}
+
+<h1 style="text-align: center;">Search Products</h1>
+
+<div class="form">
+
+    <form action="/search" method="GET" class="form-control-feedback">
+
+        <div class="input-group card">
+            <span>Search by name: </span><input type="text" name="query" id="query">
+
+        </div>
+        <br>
+        <div class="input-group card">
+            <input type="submit" value="Search" class="btn btn-primary btn-sm">
+        </div>
+    </form>
+</div>
+
+<br>
+<br>
+
+
+{% if products|length < 1 %} 
+    <h4 style="text-align: center;">There are no products.</h4>
+    <br>
+{% else %}
+    <table class="table table-responsive">
+        <tr>
+            <th>Name</th>
+            <th>Price</th>
+            <th>Actions</th>
+        </tr>
+        {% for product in products %}
+            <tr>
+                <td>{{ product[1] }}</td>
+                <td>{{ product[2] }}</td>
+                <td>
+                    <a href="/delete/{{product[0]}}" class="btn btn-secondary btn-sm">Delete</a>
+                </td>
+            </tr>
+        {% endfor %}
+    </table>
+
+{% endif %}
+
+    {% endblock %}

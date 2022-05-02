@@ -1,0 +1,66 @@
+{% extends 'base.html' %}
+
+{% block head %}
+
+<title>Add Product</title>
+
+{% endblock %}
+
+
+{% block body %}
+
+<h1 style="text-align: center;">Add Product</h1>
+
+<form action="/" method="POST" class="form-control-feedback">
+    <div class="input-group card">
+        <span>Name: </span>
+        <input type="text" name="name" id="name">
+    </div>
+    <br>
+    <div class="input-group card">
+        <span>Price: </span>
+        <input type="text" name="price" id="price">
+    </div>
+    <br>
+    
+    {% if message %}
+
+    <div class="alert-danger">
+        <h5 style="text-align: center">{{ message }}</h5>
+    </div>
+    <br>
+    {% endif %}
+
+    <input type="submit" value="Add Product" class="btn btn-primary btn-sm" style="position:absolute; left: 47% ">
+
+    <br>
+
+    <br>
+
+</form>
+
+{% if products|length < 1 %}
+    <h4 style="text-align: center;">There are no products yet.</h4>
+{% else %}
+    <table class="table table-responsive">
+        <tr>
+            <th>Name</th>
+            <th>Price</th>
+            <th>Actions</th>
+        </tr>
+        {% for product in products %}
+            <tr>
+                <td>{{ product[1] }}</td>
+                <td>{{ product[2] }}</td>
+                <td>
+                    <a href="/delete/{{product[0]}}" class="btn btn-secondary btn-sm" >Delete</a>
+                </td>
+            </tr>
+        {% endfor %}
+    </table>
+
+{% endif %}
+
+
+
+{% endblock %}
