@@ -51,4 +51,4 @@ def delete(id):
         return "There was an error when deleting that task."
 
 if __name__ == "__main__":
-   app.run(debug=True)
+   app.run(host='0.0.0.0')
